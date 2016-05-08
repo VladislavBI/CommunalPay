@@ -55,6 +55,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModel\PropertyAddViewModel.cs" />
+    <Compile Include="View\PropertyAddView.xaml.cs">
+      <DependentUpon>PropertyAddView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="View\ChooseWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EditPaymantView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -63,11 +75,24 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Infrastructure\DI.cs" />
+    <Compile Include="ViewModel\ChooseWindowViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\NewPaymentViewModel.cs" />
+    <Compile Include="View\ChooseWindow.xaml.cs">
+      <DependentUpon>ChooseWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditPaymantView.xaml.cs">
+      <DependentUpon>EditPaymantView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\PropertyAddView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -98,6 +123,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\CommunalPay.Logic\CommunalPay.Logic.csproj">
+      <Project>{c7b491a3-5841-453f-921f-7bb16d7f4e7b}</Project>
+      <Name>CommunalPay.Logic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ComunalPay\ComunalPay.csproj">
       <Project>{6ed710f0-a7d5-4929-8cc7-d27b057af689}</Project>
       <Name>ComunalPay</Name>

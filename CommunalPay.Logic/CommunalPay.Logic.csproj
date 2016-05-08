@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6ED710F0-A7D5-4929-8CC7-D27B057AF689}</ProjectGuid>
+    <ProjectGuid>{C7B491A3-5841-453F-921F-7BB16D7F4E7B}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ComunalPay</RootNamespace>
-    <AssemblyName>ComunalPay</AssemblyName>
+    <RootNamespace>CommunalPay.Logic</RootNamespace>
+    <AssemblyName>CommunalPay.Logic</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,7 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -44,25 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Abstract\IAdress.cs" />
-    <Compile Include="Model\Abstract\ICommentator.cs" />
-    <Compile Include="Model\Abstract\IPayer.cs" />
-    <Compile Include="Model\Abstract\ISaver.cs" />
-    <Compile Include="Infrastructure\CommandClass.cs" />
-    <Compile Include="Model\Concrete\EasyPay.cs" />
-    <Compile Include="Model\Concrete\PaymentTypes.cs" />
-    <Compile Include="Model\Concrete\Property.cs" />
-    <Compile Include="Model\Concrete\XmlSaver.cs" />
-    <Compile Include="Infrastructure\InotifyImplement.cs" />
+    <Compile Include="Abstract\IFilesManager.cs" />
+    <Compile Include="Concrete\TXTFileManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Infrastructure\Abstract\" />
-    <Folder Include="Infrastructure\Concrete\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -11,9 +11,9 @@ namespace ComunalPay
     {
         static void Main(string[] args)
         {
-            XmlSaver sav = new XmlSaver();
+            /*XmlSaver sav = new XmlSaver();
             EasyPay p = new EasyPay();
-            p=sav.GetInfo(p.GetType());
+           // p=sav.GetInfo(p.GetType());*/
         }
     }
 }

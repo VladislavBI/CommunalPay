@@ -15,167 +15,167 @@ namespace ComunalPay.UI.ViewModel
     public class MainWindowViewModel: InotifyImplement
     {
 
-        #region Prop
-        ISaver save;
-        List<EasyPay> payList { get; set; }
-        DataTable pdt;
-        public DataTable PayDataTable
-        {
-            get { return pdt; }
-            set
-            {
+        //#region Prop
+        //ISaver save;
+        //List<EasyPay> payList { get; set; }
+        //DataTable pdt;
+        //public DataTable PayDataTable
+        //{
+        //    get { return pdt; }
+        //    set
+        //    {
 
-                if (pdt != value)
-                    pdt = value;
-                OnPropertyChanged("PayDataTable");
-            }
-        }
-
-
-        string selCity;
-        public string SelCity
-        {
-            get { return selCity; }
-            set
-            {
-                selCity = value;
-                if (selCity != null)
-                {
-                    CreatingAddressList();
-                }
-                OnPropertyChanged("SelCity");
-            }
-        }
-        public List<String> CityList { get; set; }
-
-        string selAddress;
-        public string SelAddress
-        {
-            get { return selAddress; }
-            set
-            {
-                selAddress = value;
-                OnPropertyChanged("SelAddress");
-            }
-        }
-        List<string> addressList;
-        public List<String> AddressList {
-            get
-            {
-                return addressList;
-            }
-            set { addressList = value;
-                OnPropertyChanged("AddressList");
-            } }
+        //        if (pdt != value)
+        //            pdt = value;
+        //        OnPropertyChanged("PayDataTable");
+        //    }
+        //}
 
 
-        string selService;
-        public string SelService
-        {
-            get { return selService; }
-            set
-            {
-                selService = value;
-                OnPropertyChanged("SelCity");
-            }
-        }
-        public List<String> ServiceList { get; set; }
+        //string selCity;
+        //public string SelCity
+        //{
+        //    get { return selCity; }
+        //    set
+        //    {
+        //        selCity = value;
+        //        if (selCity != null)
+        //        {
+        //            CreatingAddressList();
+        //        }
+        //        OnPropertyChanged("SelCity");
+        //    }
+        //}
+        //public List<String> CityList { get; set; }
+
+        //string selAddress;
+        //public string SelAddress
+        //{
+        //    get { return selAddress; }
+        //    set
+        //    {
+        //        selAddress = value;
+        //        OnPropertyChanged("SelAddress");
+        //    }
+        //}
+        //List<string> addressList;
+        //public List<String> AddressList {
+        //    get
+        //    {
+        //        return addressList;
+        //    }
+        //    set { addressList = value;
+        //        OnPropertyChanged("AddressList");
+        //    } }
 
 
-        private DateTime dateFrom;
-        public DateTime DateFrom
-        {
-            get { return dateFrom; }
-            set
-            {
-                if (dateTo > value)
-                    dateFrom = value;
-                else
-                {
-                    dateFrom = dateTo;
-                }
-                OnPropertyChanged("DateFrom");
-            }
-        }
+        //string selService;
+        //public string SelService
+        //{
+        //    get { return selService; }
+        //    set
+        //    {
+        //        selService = value;
+        //        OnPropertyChanged("SelCity");
+        //    }
+        //}
+        //public List<String> ServiceList { get; set; }
 
-        private DateTime dateTo;
-        public DateTime DateTo
-        {
-            get { return dateTo; }
-            set
-            {
-                dateTo = value;
-                OnPropertyChanged("DateTo");
-            }
-        }
 
-        #region FilterChB
+        //private DateTime dateFrom;
+        //public DateTime DateFrom
+        //{
+        //    get { return dateFrom; }
+        //    set
+        //    {
+        //        if (dateTo > value)
+        //            dateFrom = value;
+        //        else
+        //        {
+        //            dateFrom = dateTo;
+        //        }
+        //        OnPropertyChanged("DateFrom");
+        //    }
+        //}
 
-        bool chBCity;
-        public bool ChBCity
-        {
-            get { return chBCity; }
-            set
-            {
-                chBCity = value;
-                if (chBCity != null)
-                {
-                    CreatingAddressList();
-                }
-                OnPropertyChanged("ChBCity");
-            }
-        }
+        //private DateTime dateTo;
+        //public DateTime DateTo
+        //{
+        //    get { return dateTo; }
+        //    set
+        //    {
+        //        dateTo = value;
+        //        OnPropertyChanged("DateTo");
+        //    }
+        //}
 
-        bool chBAddress;
-        public bool ChBAddress
-        {
-            get { return chBAddress; }
-            set
-            {
-                chBAddress = value;
-                if (chBAddress != null)
-                {
-                    CreatingAddressList();
-                }
-                OnPropertyChanged("ChBAddress");
-            }
-        }
+        //#region FilterChB
 
-        bool chBService;
-        public bool ChBService
-        {
-            get { return chBService; }
-            set
-            {
-                chBService = value;
-                if (chBService != null)
-                {
-                    CreatingAddressList();
-                }
-                OnPropertyChanged("ChBService");
-            }
-        }
+        //bool chBCity;
+        //public bool ChBCity
+        //{
+        //    get { return chBCity; }
+        //    set
+        //    {
+        //        chBCity = value;
+        //        if (chBCity != null)
+        //        {
+        //            CreatingAddressList();
+        //        }
+        //        OnPropertyChanged("ChBCity");
+        //    }
+        //}
 
-        bool chBDates;
-        public bool ChBDates
-        {
-            get { return chBDates; }
-            set
-            {
-                chBDates = value;
-                OnPropertyChanged("ChBDates");
-            }
-        }
-        #endregion
-        #region Commands
-        public ICommand filterCommand { get; set; }
-        public ICommand clearFilterCommand { get; set; } 
-        #endregion
-        #endregion
+        //bool chBAddress;
+        //public bool ChBAddress
+        //{
+        //    get { return chBAddress; }
+        //    set
+        //    {
+        //        chBAddress = value;
+        //        if (chBAddress != null)
+        //        {
+        //            CreatingAddressList();
+        //        }
+        //        OnPropertyChanged("ChBAddress");
+        //    }
+        //}
+
+        //bool chBService;
+        //public bool ChBService
+        //{
+        //    get { return chBService; }
+        //    set
+        //    {
+        //        chBService = value;
+        //        if (chBService != null)
+        //        {
+        //            CreatingAddressList();
+        //        }
+        //        OnPropertyChanged("ChBService");
+        //    }
+        //}
+
+        //bool chBDates;
+        //public bool ChBDates
+        //{
+        //    get { return chBDates; }
+        //    set
+        //    {
+        //        chBDates = value;
+        //        OnPropertyChanged("ChBDates");
+        //    }
+        //}
+        //#endregion
+        //#region Commands
+        //public ICommand filterCommand { get; set; }
+        //public ICommand clearFilterCommand { get; set; } 
+        //#endregion
+        //#endregion
 
         public MainWindowViewModel()
         {}
-        public MainWindowViewModel(ISaver s, List<EasyPay> lp)
+       /* public MainWindowViewModel(ISaver s, List<EasyPay> lp)
         {
             
             save = s;
@@ -202,9 +202,9 @@ namespace ComunalPay.UI.ViewModel
         /// </summary>
         private void SetFirstValues()
         {
-            SelCity = payList[0].City;
+            SelCity = payList[0].Street;
             SelService = payList[0].PaymentType;
-            SelAddress = payList[0].Street;
+            SelAddress = payList[0].Address;
             dateFrom = DateTime.Now;
             dateTo = DateTime.Now;
         }
@@ -214,9 +214,9 @@ namespace ComunalPay.UI.ViewModel
         /// </summary>
         private void FillLists()
         {
-            CityList = payList.Select(x => x.City).Distinct().ToList();
+            CityList = payList.Select(x => x.Street).Distinct().ToList();
             ServiceList = payList.Select(x => x.PaymentType).Distinct().ToList();
-            AddressList= payList.Select(x => x.Street).Distinct().ToList();
+            AddressList= payList.Select(x => x.Address).Distinct().ToList();
         }
 
         /// <summary>
@@ -251,8 +251,8 @@ namespace ComunalPay.UI.ViewModel
             foreach (var tmp in t)
             {
                 DataRow row = PayDataTable.NewRow();
-                row[0] = tmp.City;
-                row[1] = tmp.Street;
+                row[0] = tmp.Street;
+                row[1] = tmp.Address;
                 row[2] = tmp.PaymentType;
                 row[3] = tmp.Readings;
                 row[4] = tmp.GetPaymant;
@@ -281,7 +281,7 @@ namespace ComunalPay.UI.ViewModel
 
         void CreatingAddressList()
         {
-            AddressList = payList.Where(z => z.City == SelCity).Select(x => x.Street).ToList();
+            AddressList = payList.Where(z => z.Street == SelCity).Select(x => x.Address).ToList();
         }
 
 
@@ -293,11 +293,11 @@ namespace ComunalPay.UI.ViewModel
             {
                 if (ChBAddress)
                 {
-                    epList = payList.Where(x => x.City == SelCity & x.Street == SelAddress).ToList();
+                    epList = payList.Where(x => x.Street == SelCity & x.Address == SelAddress).ToList();
                 }
                 else
                 {
-                    epList = payList.Where(x => x.City == SelCity).ToList();
+                    epList = payList.Where(x => x.Street == SelCity).ToList();
                 }  
             }
             if (ChBService)
@@ -323,6 +323,6 @@ namespace ComunalPay.UI.ViewModel
             ChBService = false;
             ChBDates = false;
         } 
-        #endregion
+        #endregion*/
     }
 }

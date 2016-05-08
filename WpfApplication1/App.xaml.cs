@@ -1,5 +1,7 @@
 ﻿using ComunalPay.Infrastructure.Concrete;
 using ComunalPay.UI;
+using ComunalPay.UI.Infrastructure;
+using ComunalPay.UI.View;
 using ComunalPay.UI.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -19,14 +21,23 @@ namespace WpfApplication1
         void OnStartup(object sender, StartupEventArgs e)
         {
 
-            MainWindow view = new MainWindow();
-            MainWindowViewModel viewModel = new MainWindowViewModel(new XmlSaver(), new List<EasyPay>() {
-                new EasyPay() { City="Холодная Гора 190/6" ,Street="34В", PaymentType="Свет", PayDate=DateTime.Now},
-                new EasyPay() { City="Холодная Гора 190/6" ,Street="35В", PaymentType="Коммунальные услуги", PayDate=DateTime.Now},
-                new EasyPay() { City="Дубового 10" ,Street="10", PaymentType="Коммунальные услуги", PayDate=DateTime.Now}
-            });
+            DI.CreateBindings();
+            DI.FilesManager.FilesName = "Property.txt";
+            
+            
+
+            ChooseWindow view = new ChooseWindow();
+            /*ChooseWindowViewModel viewModel = new ChooseWindowViewModel(new List<Property>() {
+                new Property() { Street="Холодная Гора 190/6" ,Address="34В", payList=new List<EasyPay>()},
+                new Property() { Street="Холодная Гора 190/6" ,Address="35В", payList=new List<EasyPay>()},
+                new Property() { Street="Дубового 10" ,Address="10", payList=new List<EasyPay>()}
+            });*/
+
+            ChooseWindowViewModel viewModel = new ChooseWindowViewModel();
             view.DataContext = viewModel;
             view.Show();
+
+           
         }
     }
 }

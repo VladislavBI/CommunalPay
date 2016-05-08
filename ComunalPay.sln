@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComunalPay", "ComunalPay\Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComunalPay.UI", "WpfApplication1\ComunalPay.UI.csproj", "{B22BEE72-CA3D-4A60-AA75-BC5F809F7F4A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommunalPay.Logic", "CommunalPay.Logic\CommunalPay.Logic.csproj", "{C7B491A3-5841-453F-921F-7BB16D7F4E7B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B22BEE72-CA3D-4A60-AA75-BC5F809F7F4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B22BEE72-CA3D-4A60-AA75-BC5F809F7F4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B22BEE72-CA3D-4A60-AA75-BC5F809F7F4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7B491A3-5841-453F-921F-7BB16D7F4E7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7B491A3-5841-453F-921F-7BB16D7F4E7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7B491A3-5841-453F-921F-7BB16D7F4E7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7B491A3-5841-453F-921F-7BB16D7F4E7B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

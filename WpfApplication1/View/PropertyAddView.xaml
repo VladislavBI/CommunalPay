@@ -1,0 +1,39 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ComunalPay.UI.View"
+        xmlns:ViewModel="clr-namespace:ComunalPay.UI.ViewModel" xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="ComunalPay.UI.View.PropertyAddView"
+        mc:Ignorable="d"
+        Title="PropetyAddView" Height="300" Width="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="75*"/>
+            <ColumnDefinition Width="217*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.DataContext>
+            <ViewModel:PropertyAddViewModel/>
+        </Grid.DataContext>
+        <TextBlock  HorizontalAlignment="Center" TextWrapping="Wrap" Text="Новая недвижимость" VerticalAlignment="Center" Height="15" Grid.ColumnSpan="2"/>
+
+        <TextBlock  HorizontalAlignment="Center" TextWrapping="Wrap" Text="Адрес" VerticalAlignment="Center" Grid.Row="1" Height="16" Margin="26,25,15,26" Width="34"/>
+        <StackPanel Grid.Column="1" Grid.Row="1">
+            <TextBox    Height="23"   TextWrapping="Wrap" Text="{Binding Address, Mode=OneWayToSource}" VerticalAlignment="Center" Margin="0,22,0,0" />
+            <ListBox Visibility="Collapsed">
+            </ListBox>
+        </StackPanel>
+        <TextBlock  HorizontalAlignment="Center" TextWrapping="Wrap" Text="Квартира" VerticalAlignment="Center" Grid.Row="2" Height="16" Margin="18,26,5,26" Width="52"/>
+        <TextBox   Grid.Column="1" Height="24"  Grid.Row="2" TextWrapping="Wrap" Text="{Binding Street, Mode=OneWayToSource}" VerticalAlignment="Center" />
+
+        <Button x:Name="button" Content="Добавить" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Center" Width="76" Height="20" Grid.ColumnSpan="2"  Margin="30,0,0,0" Click="button_Click" Command="{Binding AddProperty}"/>
+        <Button x:Name="button1" Content="Отменить" Grid.Column="1" HorizontalAlignment="Right"  Grid.Row="3" VerticalAlignment="Center" Width="76" Height="20" Margin="0,0,30,0" Click="button_Click"/>
+
+    </Grid>
+</Window>

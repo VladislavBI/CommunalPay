@@ -74,14 +74,15 @@
                 <DataGridTextColumn Header="Разница" Binding="{Binding Path=Разница}" IsReadOnly="True" Width="*" CanUserSort="False"/>
 
             </DataGrid.Columns>
+            
         </DataGrid>
-
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
+            
 
         </Grid>
         

@@ -1,0 +1,61 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ComunalPay.UI.View"
+        xmlns:ViewModel="clr-namespace:ComunalPay.UI.ViewModel" x:Class="ComunalPay.UI.View.EditPaymantView"
+        mc:Ignorable="d"
+        Title="EditPaymantView" Height="300" Width="300">
+    <Window.DataContext>
+        <ViewModel:NewPaymentViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="88"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Center"  
+			TextWrapping="Wrap" Text="Новая операция" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+
+        <TextBlock HorizontalAlignment="Center" Grid.Row="1" Text="Тип операции" VerticalAlignment="Center"/>
+        <ComboBox x:Name="comboBox" Grid.Column="1"   Grid.Row="1" VerticalAlignment="Center"  />
+
+        <TextBlock HorizontalAlignment="Center" Grid.Row="2" Text="Дата" VerticalAlignment="Center"/>
+        <DatePicker Grid.Column="1" Grid.Row="2" VerticalAlignment="Center"/>
+
+        <TextBlock HorizontalAlignment="Center" Grid.Row="3" Text="Сумма" VerticalAlignment="Center"/>
+        <TextBox x:Name="textBox" Grid.Column="1" Height="23" 
+			Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Center"/>
+
+        <TextBlock Grid.Row="4" Text="Имя" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <TextBox  Grid.Column="1" Height="23" 
+			Grid.Row="4" TextWrapping="Wrap" Text="" VerticalAlignment="Center"/>
+
+        <TextBlock HorizontalAlignment="Center" Grid.Row="5" Text="Показания" VerticalAlignment="Center"/>
+        <TextBox  Grid.Column="1"  Height="23" 
+			Grid.Row="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" 
+			/>
+
+        <TextBlock HorizontalAlignment="Center" Grid.Row="6" Text="Входящий счет" VerticalAlignment="Center"/>
+        <CheckBox Content="" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Center"/>
+
+        <TextBlock HorizontalAlignment="Center" Grid.Row="7" Text="Показания" VerticalAlignment="Center" Grid.RowSpan="2"/>
+        <TextBox  Grid.Column="1" Grid.Row="7" TextWrapping="Wrap" Text=""  Grid.RowSpan="2"/>
+
+        <Button x:Name="button" Content="Добавить" HorizontalAlignment="Left" Grid.Row="9" VerticalAlignment="Center" Width="76" Margin="30,0,0,0" Grid.ColumnSpan="2"/>
+        <Button x:Name="button1" Content="Отмена" Grid.Column="1" HorizontalAlignment="Right" Grid.Row="9" VerticalAlignment="Center" Width="75" Margin="0,0,30,0" Grid.ColumnSpan="2"/>
+    </Grid>
+</Window>
