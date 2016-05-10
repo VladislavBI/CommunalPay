@@ -50,6 +50,7 @@
     <Compile Include="Model\Abstract\ISaver.cs" />
     <Compile Include="Infrastructure\CommandClass.cs" />
     <Compile Include="Model\Concrete\EasyPay.cs" />
+    <Compile Include="Model\Concrete\PaymentType.cs" />
     <Compile Include="Model\Concrete\PaymentTypes.cs" />
     <Compile Include="Model\Concrete\Property.cs" />
     <Compile Include="Model\Concrete\XmlSaver.cs" />

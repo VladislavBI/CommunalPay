@@ -1,5 +1,4 @@
-﻿using ComunalPay.UI.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,18 +15,13 @@ using System.Windows.Shapes;
 namespace ComunalPay.UI.View
 {
     /// <summary>
-    /// Interaction logic for EditPaymantView.xaml
+    /// Interaction logic for StatisticWindowView.xaml
     /// </summary>
-    public partial class EditPaymantView : Window
+    public partial class StatisticWindowView : Window
     {
-        public EditPaymantView()
+        public StatisticWindowView()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
         }
     }
 }

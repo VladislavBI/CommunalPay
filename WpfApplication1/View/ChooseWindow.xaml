@@ -28,14 +28,14 @@
             <TextBlock HorizontalAlignment="Center" Grid.ColumnSpan="2" Text="Платежи" VerticalAlignment="Center"/>
             <StackPanel Grid.Row="1">
                 <Label  Content="Адрес" HorizontalContentAlignment="Center"/>
-                <ComboBox ItemsSource="{Binding StreetList}" SelectedValue="{Binding SelStreet}" />
+                <ComboBox SelectedValue="{Binding SelAddress}" ItemsSource="{Binding AddressList, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="1">
                 <Label  Content="Квартира" HorizontalContentAlignment="Center"/>
-                <ComboBox SelectedValue="{Binding SelAddress}" ItemsSource="{Binding AddressList, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+                <ComboBox ItemsSource="{Binding StreetList}" SelectedValue="{Binding SelStreet}"  />
             </StackPanel>
             <Button Content="Добавить" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Width="74" Command="{Binding NewPaymantCommand}"/>
-            <Button Content="Статистика" HorizontalAlignment="Center"  Grid.Row="2" VerticalAlignment="Center" Width="75" Grid.Column="1"/>
+            <Button Content="Статистика" HorizontalAlignment="Center"  Grid.Row="2" VerticalAlignment="Center" Width="75" Grid.Column="1" Command="{Binding PaymantsStatCommand}"/>
 
         </Grid>
         <Grid Grid.Row="1">

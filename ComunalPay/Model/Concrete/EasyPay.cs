@@ -9,7 +9,7 @@ using ComunalPay.Infrastructure.Abstract;
 namespace ComunalPay.Infrastructure.Concrete
 {
     [Serializable]
-    public class EasyPay : InotifyImplement, IPayer, ICommentator
+    public class EasyPay : InotifyImplement, IPayer, ICommentator, IComparable
     {
 
         DateTime payDate;
@@ -28,67 +28,92 @@ namespace ComunalPay.Infrastructure.Concrete
             }
         }
 
+        decimal paySum;
         public decimal PaySum
         {
             get
             {
-                return PaySum;
+                return paySum;
             }
 
             set
             {
-                if (PaySum != value)
-                    PaySum = value;
+                if (paySum != value)
+                    paySum = value;
                 OnPropertyChanged("PaySum");
             }
         }
 
+        float? readings;
         public float? Readings
         {
             get
             {
-                return Readings;
+                return readings;
             }
 
             set
             {
-                if (Readings != value)
-                    Readings = value;
+                if (readings != value)
+                    readings = value;
                 OnPropertyChanged("Readings");
             }
         }
 
+        string payType;
         public string PayType
         {
             get
             {
-                return PayType;
+                return payType;
             }
 
             set
             {
-                if (PayType != value)
-                    PayType = value;
+                if (payType != value)
+                    payType = value;
                 OnPropertyChanged("PayType");
             }
         }
 
+        string commentary;
         public string Commentary
         {
             get
             {
-                return Commentary;
+                return commentary;
             }
 
             set
             {
-                if (Commentary != value)
-                    Commentary = value;
+                if (commentary != value)
+                    commentary = value;
                 OnPropertyChanged("Commentary");
+            }
+        }
+
+        bool incomingBill;
+        public bool IncomingBill
+        {
+            get
+            {
+                return incomingBill;
+            }
+
+            set
+            {
+                if (incomingBill != value)
+                    incomingBill = value;
+                OnPropertyChanged("IncomingBill");
             }
         }
 
         public EasyPay()
         {}
+        
+        public int CompareTo(object obj)
+        {
+            return payDate.CompareTo(obj);
+        }
     }
 }

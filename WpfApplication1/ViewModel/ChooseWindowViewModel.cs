@@ -15,7 +15,6 @@ namespace ComunalPay.UI.ViewModel
     class ChooseWindowViewModel: InotifyImplement
     {
         #region Prop
-        ISaver<dynamic> save;
         List<Property> propList { get; set; }
 
         #region ComboBox
@@ -26,15 +25,23 @@ namespace ComunalPay.UI.ViewModel
             set
             {
                 selStreet = value;
-                if (selStreet != null)
-                {
-                    CreatingAddressList();
-                    SelAddress = addressList[0];
-                }
+                
                 OnPropertyChanged("SelStreet");
             }
         }
-        public List<String> StreetList { get; set; }
+        List<String> streetList;
+        public List<String> StreetList
+        {
+            get
+            {
+                return streetList;
+            }
+            set
+            {
+                streetList = value;
+                OnPropertyChanged("StreetList");
+            }
+        }
 
         string selAddress;
         public string SelAddress
@@ -43,6 +50,11 @@ namespace ComunalPay.UI.ViewModel
             set
             {
                 selAddress = value;
+                if (selAddress != null)
+                {
+                    CreatingStreetList();
+                    SelStreet = StreetList[0];
+                }
                 OnPropertyChanged("SelAddress");
             }
         }
@@ -57,7 +69,7 @@ namespace ComunalPay.UI.ViewModel
             set
             {
                 addressList = value;
-
+                
                 OnPropertyChanged("AddressList");
             }
         }
@@ -84,14 +96,16 @@ namespace ComunalPay.UI.ViewModel
                         propList.Add(DI.Saver.GetInfo(new Property(), file));
                     }
                 }
+                propList.RemoveAll(x => x == null);
 
-                FillLists();
                 SetFirstValues();
+                FillLists();
 
                 
             }
             NewPaymantCommand = new CommandClass(arg => AddNewPaymentMethod());
             AddPropertyCommand = new CommandClass(arg => AddPropertyMethod());
+            PaymantsStatCommand = new CommandClass(arg => PaymentStatMethod());
         }
 
         
@@ -109,14 +123,13 @@ namespace ComunalPay.UI.ViewModel
         /// Начальные значения
         /// </summary>
         private void SetFirstValues()
-        {
-            SelStreet = propList[0].Street;      
+        {  
             SelAddress = propList[0].Address;
         }
 
-        void CreatingAddressList()
+        void CreatingStreetList()
         {
-            AddressList = propList.Where(z => z.Street == SelStreet).Select(x => x.Address).ToList();
+            StreetList = propList.Where(z => z.Address == SelAddress).Select(x => x.Street).ToList();
         }
 
 
@@ -124,7 +137,7 @@ namespace ComunalPay.UI.ViewModel
         void AddNewPaymentMethod()
         {
             EditPaymantView view = new EditPaymantView();
-            ChooseWindowViewModel vm = new ChooseWindowViewModel();
+            NewPaymentViewModel vm = new NewPaymentViewModel(selStreet, selAddress);
             view.DataContext = vm;
             view.Show();
         }
@@ -134,7 +147,15 @@ namespace ComunalPay.UI.ViewModel
             PropertyAddViewModel vm = new PropertyAddViewModel();
             view.DataContext = vm;
             view.Show();
-        } 
+        }
+
+        void PaymentStatMethod()
+        {
+            StatisticWindowView view = new StatisticWindowView();
+            StatisticWindowViewModel vm = new StatisticWindowViewModel(selStreet, selAddress);
+            view.DataContext = vm;
+            view.Show();
+        }
         #endregion
     }
 }

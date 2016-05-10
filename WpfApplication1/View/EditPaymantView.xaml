@@ -17,45 +17,48 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition />
+            <RowDefinition Height="{Binding DateRow}" />
+            <RowDefinition Height="{Binding SumRow}" />
+            <RowDefinition Height="{Binding NameRow}"/>
+            <RowDefinition Height="{Binding ReadingsRow}"/>
+            <RowDefinition Height="{Binding BillRow}"/>
+            <RowDefinition Height="{Binding CommentRow}"/>
+            <RowDefinition Height="{Binding CommentRow}"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Center"  
 			TextWrapping="Wrap" Text="Новая операция" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
 
         <TextBlock HorizontalAlignment="Center" Grid.Row="1" Text="Тип операции" VerticalAlignment="Center"/>
-        <ComboBox x:Name="comboBox" Grid.Column="1"   Grid.Row="1" VerticalAlignment="Center"  />
+        <ComboBox x:Name="comboBox" Grid.Column="1"   Grid.Row="1" VerticalAlignment="Center" 
+                  ItemsSource="{Binding PaymantsT}"
+                  SelectedValue="{Binding SelPType, Mode=OneWayToSource}"                   
+                IsSynchronizedWithCurrentItem="true"/>
 
         <TextBlock HorizontalAlignment="Center" Grid.Row="2" Text="Дата" VerticalAlignment="Center"/>
-        <DatePicker Grid.Column="1" Grid.Row="2" VerticalAlignment="Center"/>
+        <DatePicker Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" SelectedDate="{Binding SelDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
         <TextBlock HorizontalAlignment="Center" Grid.Row="3" Text="Сумма" VerticalAlignment="Center"/>
         <TextBox x:Name="textBox" Grid.Column="1" Height="23" 
-			Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Center"/>
+			Grid.Row="3" TextWrapping="Wrap" Text="{Binding SelSum, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center"/>
 
         <TextBlock Grid.Row="4" Text="Имя" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         <TextBox  Grid.Column="1" Height="23" 
-			Grid.Row="4" TextWrapping="Wrap" Text="" VerticalAlignment="Center"/>
+			Grid.Row="4" TextWrapping="Wrap" Text="{Binding SelName, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center"/>
 
         <TextBlock HorizontalAlignment="Center" Grid.Row="5" Text="Показания" VerticalAlignment="Center"/>
         <TextBox  Grid.Column="1"  Height="23" 
-			Grid.Row="5" TextWrapping="Wrap" Text="" VerticalAlignment="Center" 
+			Grid.Row="5" TextWrapping="Wrap" Text="{Binding SelReadings, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" 
 			/>
 
         <TextBlock HorizontalAlignment="Center" Grid.Row="6" Text="Входящий счет" VerticalAlignment="Center"/>
-        <CheckBox Content="" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Center"/>
+        <CheckBox Content="" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Center" IsChecked="{Binding SelBill, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <TextBlock HorizontalAlignment="Center" Grid.Row="7" Text="Показания" VerticalAlignment="Center" Grid.RowSpan="2"/>
-        <TextBox  Grid.Column="1" Grid.Row="7" TextWrapping="Wrap" Text=""  Grid.RowSpan="2"/>
+        <TextBlock HorizontalAlignment="Center" Grid.Row="7" Text="Комментарий" VerticalAlignment="Center" Grid.RowSpan="2"/>
+        <TextBox  Grid.Column="1" Grid.Row="7" TextWrapping="Wrap" Text="{Binding SelCom, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"  Grid.RowSpan="2"/>
 
-        <Button x:Name="button" Content="Добавить" HorizontalAlignment="Left" Grid.Row="9" VerticalAlignment="Center" Width="76" Margin="30,0,0,0" Grid.ColumnSpan="2"/>
-        <Button x:Name="button1" Content="Отмена" Grid.Column="1" HorizontalAlignment="Right" Grid.Row="9" VerticalAlignment="Center" Width="75" Margin="0,0,30,0" Grid.ColumnSpan="2"/>
+        <Button x:Name="button" Content="Добавить" HorizontalAlignment="Left" Grid.Row="9" VerticalAlignment="Center" Width="76" Margin="30,0,0,0" Grid.ColumnSpan="2" Click="button1_Click" Command="{Binding NewPaymantCommand}"/>
+        <Button x:Name="button1" Content="Отмена" Grid.Column="1" HorizontalAlignment="Right" Grid.Row="9" VerticalAlignment="Center" Width="75" Margin="0,0,30,0" Grid.ColumnSpan="2" Click="button1_Click"/>
     </Grid>
 </Window>

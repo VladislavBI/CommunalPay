@@ -23,7 +23,7 @@ namespace ComunalPay.Infrastructure.Concrete
             Type t = obj.GetType();
             XmlSerializer formatter = new XmlSerializer(t);
 
-            using (FileStream fs=new FileStream(fName, FileMode.OpenOrCreate))
+            using (FileStream fs=new FileStream(fName, FileMode.Create))
             {
                 formatter.Serialize(fs, obj);
             }
@@ -41,10 +41,18 @@ namespace ComunalPay.Infrastructure.Concrete
             using (FileStream fs = new FileStream(fName, FileMode.Open))
             {
                 //Convert.ChangeType(formatter.Deserialize(fs), t)
-                New = (T)formatter.Deserialize(fs);
-                
+
+                //Если типы не сходяться
+                try
+                {
+                    New = (T)formatter.Deserialize(fs);
+                }
+                catch (Exception)
+                {
+                    return null;
+                }               
             }
-            return New;
+                return New;
         }
 
         public bool IsEmpty(string fName)

@@ -13,9 +13,9 @@ namespace CommunalPay.Logic.Abstract
         void AddFileName(ref string Name);
         IEnumerable<string> GetFilesName();
         /// <summary>
-        /// Редакттирование имени файла
+        /// Проверки имени файла на недопустимые знаки и их изменение
         /// </summary>
-        /// <param name="edit">Изменение = true, удаление = false </param>
-        void EditFileName(bool edit);
+        /// <param name="Name">Исходное имя файла</param>
+        void EditFileName(ref string Name);
     }
 }

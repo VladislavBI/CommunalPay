@@ -15,6 +15,8 @@ namespace ComunalPay.Infrastructure.Abstract
         decimal PaySum { get; set; }
         float? Readings { get; set; }
         string PayType { get; set; }
+
+        bool IncomingBill { get; set; }
     }
 }
  

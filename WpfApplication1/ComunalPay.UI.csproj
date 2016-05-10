@@ -56,8 +56,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ViewModel\PropertyAddViewModel.cs" />
+    <Compile Include="ViewModel\StatisticWindowViewModel.cs" />
     <Compile Include="View\PropertyAddView.xaml.cs">
       <DependentUpon>PropertyAddView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\StatisticWindowView.xaml.cs">
+      <DependentUpon>StatisticWindowView.xaml</DependentUpon>
     </Compile>
     <Page Include="View\ChooseWindow.xaml">
       <SubType>Designer</SubType>
@@ -90,6 +94,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\PropertyAddView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\StatisticWindowView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

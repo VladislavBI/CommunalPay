@@ -28,19 +28,18 @@ namespace CommunalPay.Logic.Concrete
         {
             using (StreamWriter write = new StreamWriter(FilesName, true, System.Text.Encoding.Default))
             {
-                if (Name.Contains("/")|| Name.Contains(@"\"))
-                {
-                    Name=Name.Replace(@"\", "#");
-                    Name=Name.Replace("/", "#");
-
-                }                    
+                EditFileName(ref Name);
                 write.WriteLine(Name);
             }
         }
 
-        public void EditFileName(bool edit)
+        public void EditFileName(ref string Name)
         {
-            //throw new NotImplementedException();
+            if (Name.Contains("/") || Name.Contains(@"\"))
+            {
+                Name = Name.Replace(@"\", "#");
+                Name = Name.Replace("/", "#");
+            }
         }
 
         public IEnumerable<string> GetFilesName()
