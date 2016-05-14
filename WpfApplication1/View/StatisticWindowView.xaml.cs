@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ComunalPay.Infrastructure.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,11 @@ namespace ComunalPay.UI.View
         public StatisticWindowView()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var se = dgt.SelectedValue;
         }
     }
 }

@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ComunalPay.UI.View"
         xmlns:ViewModel="clr-namespace:ComunalPay.UI.ViewModel" x:Class="ComunalPay.UI.View.StatisticWindowView"
+        xmlns:Infrastr="clr-namespace:ComunalPay.UI.Infrastructure"
         mc:Ignorable="d"
         Title="StatisticWindowView" Height="719.25" Width="972.375" WindowState="Maximized">
     <Window.DataContext>
@@ -38,8 +39,67 @@
             </ListView>
 
         </StackPanel>
-        <DataGrid  Grid.Row="2" Grid.ColumnSpan="2"/>
+
+
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="3*"/>
+            </Grid.RowDefinitions>
+            <StackPanel  Grid.Row="1" >
+                <TextBlock HorizontalAlignment="Center" Text="Фильтр"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <CheckBox IsChecked="{Binding ChBDate}" />
+                 <Label Content="Дата"/>
+                    <DatePicker SelectedDate="{Binding From}"/>
+                    <TextBlock TextWrapping="Wrap" Text="-"/>
+                    <DatePicker SelectedDate="{Binding To}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <CheckBox IsChecked="{Binding ChBType}" />
+                    <Label Content="Услуга"/>
+                    <ComboBox ItemsSource="{Binding PaymentT.GetAllNames, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                     SelectedValue="{Binding SelType}"                   
+                     IsSynchronizedWithCurrentItem="true"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Width="75" Height="20" Content="Применить" Command="{Binding AcceptFilterCommand}"/>
+                    <Button Width="75" Height="20"  Content="Отменить" Command="{Binding ResetFilterCommand}"/>
+                </StackPanel>
+
+            </StackPanel>
+
+        </Grid>
+
+
+        <DataGrid  Name="dgt" Grid.Row="2" Grid.ColumnSpan="2" ItemsSource="{Binding PaymantsTable, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" SelectedItem="{Binding SelDataGridRow, Mode=OneWayToSource}">
+            <DataGrid.Resources>
+                <Infrastr:BindingProxy x:Key="proxy" Data="{Binding}"/>  
+            </DataGrid.Resources>
+            <DataGrid.Columns >
+                <DataGridTextColumn Header="Дата" Binding="{Binding Path=Дата, StringFormat={}\{0:dd/MM/yyyy\}}" Width="*" IsReadOnly="True" Visibility="{Binding Data.DateRow, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, Source={StaticResource proxy}}"/>
+                <DataGridTextColumn Header="Тип" Binding="{Binding Path=Тип}"  Width="*" IsReadOnly="True" Visibility="{Binding Data.TypeRow, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, Source={StaticResource proxy}}"/>
+                <DataGridTextColumn Header="Сумма" Binding="{Binding Path=Сумма}"  Width="*" IsReadOnly="True" Visibility="{Binding Data.SumRow, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, Source={StaticResource proxy}}"/>
+                <DataGridTextColumn Header="Имя" Binding="{Binding Path=Имя}"  Width="*" IsReadOnly="True" Visibility="{Binding Data.NameRow, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, Source={StaticResource proxy}}"/>
+                <DataGridTextColumn Header="Показания" Binding="{Binding Path=Показания}"  Width="*" IsReadOnly="True" Visibility="{Binding Data.ReadingsRow, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, Source={StaticResource proxy}}"/>
+                <!--<DataGridCheckBoxColumn Header="Входящий счет" Binding="{Binding Path=Входящий счёт}"  Width="*" IsReadOnly="True" Visibility="{Binding Data.BillRow, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, Source={StaticResource proxy}}"/>-->
+            </DataGrid.Columns>
+        </DataGrid>
         <TextBlock HorizontalAlignment="Center" Grid.ColumnSpan="2" TextWrapping="Wrap" Text="{Binding curFullAddress}" VerticalAlignment="Center"/>
+        <Grid Grid.Row="3" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock x:Name="textBlock" HorizontalAlignment="Center" Margin="0,0,0,0" TextWrapping="Wrap" Text="{Binding FullInfo}" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+
+            <Button x:Name="button" Content="Изменить  выбранную строку" HorizontalAlignment="Left" Margin="230,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
+            <Button x:Name="button1" Content="Выйти" HorizontalAlignment="Left" Margin="598,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
+
+        </Grid>
+
+
 
     </Grid>
 </Window>

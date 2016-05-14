@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ComunalPay.Infrastructure.Abstract
+namespace ComunalPay.Model.Abstract
 {
-    public interface ICommentator
+   public interface IInvestor
     {
-        string Commentary { get; set; }
-
-        
+        string PayName { get; set; }
     }
 }

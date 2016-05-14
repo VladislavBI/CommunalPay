@@ -277,8 +277,9 @@ namespace ComunalPay.UI.ViewModel
             p.PaySum = selSum;
             p.PayType = selPType;
             p.Readings = selReadings;
-
+            p.PayName = selName;
             proper.payList.Add(p);
+
             DI.Saver.SaveInfo(proper, propFileName);
             Console.WriteLine();
         }

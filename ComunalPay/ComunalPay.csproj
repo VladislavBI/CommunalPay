@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Model\Abstract\IAdress.cs" />
     <Compile Include="Model\Abstract\ICommentator.cs" />
+    <Compile Include="Model\Abstract\IInvestor.cs" />
     <Compile Include="Model\Abstract\IPayer.cs" />
     <Compile Include="Model\Abstract\ISaver.cs" />
     <Compile Include="Infrastructure\CommandClass.cs" />

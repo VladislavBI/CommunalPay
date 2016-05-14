@@ -5,11 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using ComunalPay.Infrastructure;
 using ComunalPay.Infrastructure.Abstract;
+using ComunalPay.Model.Abstract;
 
 namespace ComunalPay.Infrastructure.Concrete
 {
     [Serializable]
-    public class EasyPay : InotifyImplement, IPayer, ICommentator, IComparable
+    public class EasyPay : InotifyImplement, IPayer, ICommentator, IComparable, IInvestor
     {
 
         DateTime payDate;
@@ -105,6 +106,21 @@ namespace ComunalPay.Infrastructure.Concrete
                 if (incomingBill != value)
                     incomingBill = value;
                 OnPropertyChanged("IncomingBill");
+            }
+        }
+        string payName;
+        public string PayName
+        {
+            get
+            {
+                return payName;
+            }
+
+            set
+            {
+                if (payName != value)
+                    payName = value;
+                OnPropertyChanged("PayName");
             }
         }
 

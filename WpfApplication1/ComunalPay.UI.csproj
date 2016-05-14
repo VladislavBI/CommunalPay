@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Infrastructure\BindingProxy.cs" />
     <Compile Include="ViewModel\PropertyAddViewModel.cs" />
     <Compile Include="ViewModel\StatisticWindowViewModel.cs" />
     <Compile Include="View\PropertyAddView.xaml.cs">
@@ -127,7 +128,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
