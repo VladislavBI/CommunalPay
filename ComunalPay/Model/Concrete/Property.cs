@@ -10,6 +10,18 @@ namespace ComunalPay.Infrastructure.Concrete
     [Serializable]
     public class Property : InotifyImplement, IAdress, ICommentator
     {
+        private int idProp;
+
+        public int IdProp
+        {
+            get { return idProp; }
+            set
+            {
+                idProp = value;
+                OnPropertyChanged("IdProp");
+            }
+        }
+
         string address;
         public string Address
         {

@@ -56,6 +56,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Infrastructure\BindingProxy.cs" />
+    <Compile Include="ViewModel\EditPaymentViewModel.cs" />
     <Compile Include="ViewModel\PropertyAddViewModel.cs" />
     <Compile Include="ViewModel\StatisticWindowViewModel.cs" />
     <Compile Include="View\PropertyAddView.xaml.cs">

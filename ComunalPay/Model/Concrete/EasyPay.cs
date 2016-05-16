@@ -12,6 +12,13 @@ namespace ComunalPay.Infrastructure.Concrete
     [Serializable]
     public class EasyPay : InotifyImplement, IPayer, ICommentator, IComparable, IInvestor
     {
+        private int id;
+
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
 
         DateTime payDate;
         public DateTime PayDate
@@ -131,5 +138,7 @@ namespace ComunalPay.Infrastructure.Concrete
         {
             return payDate.CompareTo(obj);
         }
+
+        
     }
 }

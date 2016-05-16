@@ -14,10 +14,15 @@ namespace ComunalPay.UI.ViewModel
     {
         public string Street { get; set; }
         public string Address { get; set; }
-
+        int lastId=0;
         public ICommand AddProperty { get; set; }
+
         public PropertyAddViewModel()
+        {}
+        public PropertyAddViewModel(int lastId)
         {
+            this.lastId = lastId;
+
             AddProperty = new CommandClass(arg => AddPropertyCommand());
         }
 
@@ -26,7 +31,7 @@ namespace ComunalPay.UI.ViewModel
         {
             string fName = Street + "_" + Address;
             DI.FilesManager.AddFileName(ref fName);
-            DI.Saver.SaveInfo(new Property() {Address=this.Address, Street=this.Street }, fName);
+            DI.Saver.SaveInfo(new Property() {Address=this.Address, Street=this.Street, IdProp=lastId+1 }, fName);
         }
     }
 }

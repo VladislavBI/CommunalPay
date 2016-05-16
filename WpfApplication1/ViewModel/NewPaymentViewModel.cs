@@ -214,6 +214,7 @@ namespace ComunalPay.UI.ViewModel
         }
         #endregion
 
+       
         public ICommand NewPaymantCommand { get; set; }
         #endregion
         public NewPaymentViewModel()
@@ -225,12 +226,12 @@ namespace ComunalPay.UI.ViewModel
 
             if (!DI.Saver.IsEmpty("PaymantsTypes"))
                 paymantsT = DI.Saver.GetInfo(new PaymentTypes(), "PaymantsTypes");
+            SelDate = DateTime.Now;
 
             NewPaymantCommand = new CommandClass(arg => NewPaymentMethod());
-            SelDate = DateTime.Now;
         }
 
-
+       
 
 
         #region RowOperations
@@ -278,6 +279,8 @@ namespace ComunalPay.UI.ViewModel
             p.PayType = selPType;
             p.Readings = selReadings;
             p.PayName = selName;
+            p.Id = proper.payList[proper.payList.Count-1].Id + 1;
+
             proper.payList.Add(p);
 
             DI.Saver.SaveInfo(proper, propFileName);

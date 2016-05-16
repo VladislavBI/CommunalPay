@@ -43,6 +43,8 @@ namespace ComunalPay.Infrastructure.Concrete
                 //Convert.ChangeType(formatter.Deserialize(fs), t)
 
                 //Если типы не сходяться
+
+
                 try
                 {
                     New = (T)formatter.Deserialize(fs);
@@ -50,7 +52,7 @@ namespace ComunalPay.Infrastructure.Concrete
                 catch (Exception)
                 {
                     return null;
-                }               
+                }              
             }
                 return New;
         }

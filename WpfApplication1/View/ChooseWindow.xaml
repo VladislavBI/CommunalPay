@@ -28,7 +28,7 @@
             <TextBlock HorizontalAlignment="Center" Grid.ColumnSpan="2" Text="Платежи" VerticalAlignment="Center"/>
             <StackPanel Grid.Row="1">
                 <Label  Content="Адрес" HorizontalContentAlignment="Center"/>
-                <ComboBox SelectedValue="{Binding SelAddress}" ItemsSource="{Binding AddressList, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <ComboBox x:Name="comboBox" SelectedValue="{Binding SelAddress}" ItemsSource="{Binding AddressList, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="1">
                 <Label  Content="Квартира" HorizontalContentAlignment="Center"/>
@@ -46,11 +46,16 @@
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
             <TextBlock HorizontalAlignment="Center"  TextWrapping="Wrap" Text="Работа с недвижимостью" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="20"/>
-            <Button Content="Добавить" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" Width="75" Command="{Binding AddPropertyCommand}"/>
-            <Button  Content="Изменить" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Width="75" Grid.ColumnSpan="2"/>
-            <Button  Content="Удалить" Grid.Column="1" HorizontalAlignment="Right"  Grid.Row="1" VerticalAlignment="Center" Width="75"/>
+
+            <ComboBox SelectedValue="{Binding SelAddress}" ItemsSource="{Binding AddressList, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" VerticalAlignment="Center" />
+            <Button Content="Детально" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Width="75" />
+
+            <Button Content="Добавить" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Center" Width="75" Command="{Binding AddPropertyCommand}"/>
+            <Button  Content="Изменить" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Width="75" Grid.ColumnSpan="2"/>
+            <Button  Content="Удалить" Grid.Column="1" HorizontalAlignment="Right"  Grid.Row="2" VerticalAlignment="Center" Width="75"/>
         </Grid>
     </Grid>
 </Window>

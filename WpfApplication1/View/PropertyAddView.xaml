@@ -7,6 +7,9 @@
         xmlns:ViewModel="clr-namespace:ComunalPay.UI.ViewModel" xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="ComunalPay.UI.View.PropertyAddView"
         mc:Ignorable="d"
         Title="PropetyAddView" Height="300" Width="300">
+    <Window.DataContext>
+        <ViewModel:PropertyAddViewModel/>
+    </Window.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="75*"/>
@@ -18,9 +21,6 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Grid.DataContext>
-            <ViewModel:PropertyAddViewModel/>
-        </Grid.DataContext>
         <TextBlock  HorizontalAlignment="Center" TextWrapping="Wrap" Text="Новая недвижимость" VerticalAlignment="Center" Height="15" Grid.ColumnSpan="2"/>
 
         <TextBlock  HorizontalAlignment="Center" TextWrapping="Wrap" Text="Адрес" VerticalAlignment="Center" Grid.Row="1" Height="16" Margin="26,25,15,26" Width="34"/>

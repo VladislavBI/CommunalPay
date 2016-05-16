@@ -2,6 +2,7 @@
 using ComunalPay.Infrastructure.Concrete;
 using ComunalPay.Model.Concrete;
 using ComunalPay.UI.Infrastructure;
+using ComunalPay.UI.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -238,7 +239,8 @@ namespace ComunalPay.UI.ViewModel
 
         #region Commands
         public ICommand AcceptFilterCommand { get; set; }
-        public ICommand ResetFilterCommand { get; set; } 
+        public ICommand ResetFilterCommand { get; set; }
+        public ICommand ChangePayCommand { get; set; }
         #endregion
         #endregion
         public StatisticWindowViewModel()
@@ -259,6 +261,7 @@ namespace ComunalPay.UI.ViewModel
 
             AcceptFilterCommand = new CommandClass(arg => AcceptFilterMethod());
             ResetFilterCommand = new CommandClass(arg => ResetFilterMethod());
+            ChangePayCommand= new CommandClass(arg => ChangePayMethod());
         }
 
         private void SetFirstValue()
@@ -271,6 +274,7 @@ namespace ComunalPay.UI.ViewModel
         void CreateDataTable()
         {
             PaymantsTable = new DataTable();
+            PaymantsTable.Columns.Add("Id", typeof(int));
             PaymantsTable.Columns.Add("Дата", typeof(DateTime));
             PaymantsTable.Columns.Add("Тип");
             PaymantsTable.Columns.Add("Сумма", typeof(decimal));
@@ -286,15 +290,16 @@ namespace ComunalPay.UI.ViewModel
             foreach (var tmp in  p)
             {
                 DataRow row = PaymantsTable.NewRow();
-                row[0] = tmp.PayDate;
-                row[1] = tmp.PayType;
+                row["Id"] = tmp.Id;
+                row["Дата"] = tmp.PayDate;
+                row["Тип"] = tmp.PayType;
                 if(tmp.IncomingBill)
-                    row[2] = -tmp.PaySum;
+                    row["Сумма"] = -tmp.PaySum;
                 else
-                    row[2] = tmp.PaySum;
-                row[3] = tmp.PayName;
-                row[4] = tmp.Readings;
-                //row[5] = tmp.IncomingBill;
+                    row["Сумма"] = tmp.PaySum;
+                row["Имя"] = tmp.PayName;
+                row["Показания"] = tmp.Readings;
+                //row["Входящий счёт"] = tmp.IncomingBill;
                 PaymantsTable.Rows.Add(row); 
             }
 
@@ -408,6 +413,12 @@ namespace ComunalPay.UI.ViewModel
         {
             GetAllRowsHeight();
             FillDataTable(curProp.payList);
+        }
+
+        void ChangePayMethod()
+        {
+            DataRow row = selDataGridRow.Row;
+            int id = Convert.ToInt32(row["Id"]);
         }
         #endregion
     }

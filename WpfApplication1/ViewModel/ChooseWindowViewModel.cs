@@ -75,11 +75,13 @@ namespace ComunalPay.UI.ViewModel
         }
         #endregion
 
+        #region Commands
         public ICommand NewPaymantCommand { get; set; }
         public ICommand PaymantsStatCommand { get; set; }
         public ICommand AddPropertyCommand { get; set; }
         public ICommand EditTaskCommand { get; set; }
-        public ICommand RemoveTaskCommand { get; set; }
+        public ICommand RemoveTaskCommand { get; set; } 
+        #endregion
 
         #endregion
 
@@ -96,8 +98,9 @@ namespace ComunalPay.UI.ViewModel
                         propList.Add(DI.Saver.GetInfo(new Property(), file));
                     }
                 }
-                propList.RemoveAll(x => x == null);
+                
 
+                propList.RemoveAll(x => x == null);
                 SetFirstValues();
                 FillLists();
 
@@ -144,7 +147,10 @@ namespace ComunalPay.UI.ViewModel
         void AddPropertyMethod()
         {
             PropertyAddView view = new PropertyAddView();
-            PropertyAddViewModel vm = new PropertyAddViewModel();
+
+            int i = propList.Select(x => x.IdProp).Max();
+
+            PropertyAddViewModel vm = new PropertyAddViewModel(i);
             view.DataContext = vm;
             view.Show();
         }
